@@ -1,0 +1,42 @@
+require("lazy").setup({
+	"tpope/vim-sleuth",
+	require("plugins/greeter"),
+	require("plugins/autoclose"),
+	require("plugins/barbecue"),
+	require("plugins/cmp"),
+	require("plugins/comment"),
+	require("plugins/format"),
+	require("plugins/explorer"),
+	require("plugins/git"),
+	require("plugins/illuminate"),
+	require("plugins/lsp"),
+	require("plugins/statusline"),
+	require("plugins/move"),
+	require("plugins/noice"),
+	require("plugins/surround"),
+	require("plugins/telescope"),
+	require("plugins/terminal"),
+	require("plugins/theme"),
+	require("plugins/treesitter"),
+	require("plugins/which-key"),
+}, {
+	ui = {
+		-- If you are using a Nerd Font: set icons to an empty table which will use the
+		-- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
+		icons = vim.g.have_nerd_font and {} or {
+			cmd = "⌘",
+			config = "🛠",
+			event = "📅",
+			ft = "📂",
+			init = "⚙",
+			keys = "🗝",
+			plugin = "🔌",
+			runtime = "💻",
+			require = "🌙",
+			source = "📄",
+			start = "🚀",
+			task = "📌",
+			lazy = "💤 ",
+		},
+	},
+})
