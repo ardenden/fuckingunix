@@ -1,18 +1,10 @@
 return {
-	"aktersnurra/no-clown-fiesta.nvim",
+	"Mofiqul/vscode.nvim",
 	config = function()
-		require("no-clown-fiesta").setup({
-			transparent = false, -- Enable this to disable the bg color
-			styles = {
-				comments = { italic = true },
-				functions = {},
-				keywords = {},
-				lsp = { underline = true },
-				match_paren = {},
-				type = { bold = false },
-				variables = {},
-			},
+		require("vscode").setup({
+			italic_comments = true,
+			underline_links = true,
 		})
-		vim.cmd([[colorscheme no-clown-fiesta]])
+		vim.cmd.colorscheme("vscode")
 	end,
 }
