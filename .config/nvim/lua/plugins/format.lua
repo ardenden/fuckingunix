@@ -9,6 +9,7 @@ return {
 				json = { "prettierd", "prettier", stop_after_first = true },
 				rust = { "rustfmt" },
 				sh = { "shfmt" },
+				go = { "gofmt" },
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
