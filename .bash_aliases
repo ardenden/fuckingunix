@@ -1,5 +1,6 @@
 alias cddev='cd $(find ~/Documents/Dev -maxdepth 1 -type d | fzf)'
 alias cdls='cd $(find . -maxdepth 1 -type d | fzf)'
+alias cddot='cd ~/.dotfiles'
 
 if [ -x /usr/bin/dircolors ]; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
