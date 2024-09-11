@@ -3,7 +3,7 @@ return {
 	event = "VimEnter", -- Sets the loading event to 'VimEnter'
 	config = function() -- This is the function that runs, AFTER loading
 		require("which-key").setup({
-			preset = "helix",
+			preset = "classic",
 		})
 
 		-- document existing key chains
