@@ -20,7 +20,6 @@ return {
 		-- See `:help cmp`
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
-		luasnip.filetype_extend("typescript", { "javascript" })
 		require("luasnip.loaders.from_vscode").lazy_load()
 		luasnip.config.setup({})
 
