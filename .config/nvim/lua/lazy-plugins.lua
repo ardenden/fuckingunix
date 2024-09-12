@@ -11,6 +11,7 @@ require("lazy").setup({
 	require("plugins/illuminate"),
 	require("plugins/lsp"),
 	require("plugins/statusline"),
+	require("plugins/mark"),
 	require("plugins/move"),
 	require("plugins/noice"),
 	require("plugins/surround"),
