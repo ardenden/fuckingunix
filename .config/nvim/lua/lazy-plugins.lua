@@ -18,6 +18,7 @@ require("lazy").setup({
 	require("plugins/telescope"),
 	require("plugins/terminal"),
 	require("plugins/theme"),
+	require("plugins/transparent"),
 	require("plugins/treesitter"),
 	require("plugins/which-key"),
 }, {
