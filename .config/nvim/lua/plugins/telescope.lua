@@ -50,6 +50,13 @@ return {
 						},
 					},
 				},
+				lsp_references = {
+					theme = "dropdown",
+					preview = true,
+					layout_config = {
+						mirror = true,
+					},
+				},
 			},
 			-- pickers = {}
 			extensions = {
@@ -110,7 +117,12 @@ return {
 
 		-- Shortcut for searching your Neovim configuration files
 		vim.keymap.set("n", "<leader>sn", function()
-			builtin.find_files({ cwd = vim.fn.stdpath("config") })
+			builtin.find_files(require("telescope.themes").get_dropdown({
+				preview = true,
+				layout_config = { mirror = true },
+				prompt_title = "Search Config Files",
+				cwd = vim.fn.stdpath("config"),
+			}))
 		end, { desc = "neovim config" })
 	end,
 }
