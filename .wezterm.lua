@@ -16,6 +16,8 @@ config.inactive_pane_hsb = {
 	saturation = 0.9,
 	brightness = 0.3,
 }
+config.use_fancy_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = true
 
 -- and finally, return the configuration to wezterm
 return config
