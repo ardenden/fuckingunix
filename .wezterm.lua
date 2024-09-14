@@ -12,6 +12,10 @@ config.colors = {
 	background = "#020403",
 }
 config.window_background_opacity = 0.9
+config.inactive_pane_hsb = {
+	saturation = 0.9,
+	brightness = 0.3,
+}
 
 -- and finally, return the configuration to wezterm
 return config
