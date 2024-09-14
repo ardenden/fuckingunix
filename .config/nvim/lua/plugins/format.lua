@@ -10,6 +10,7 @@ return {
 				rust = { "rustfmt" },
 				sh = { "shfmt" },
 				go = { "gofmt" },
+				zsh = { "beautysh" },
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
