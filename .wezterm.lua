@@ -26,5 +26,13 @@ config.window_padding = {
 }
 config.window_decorations = "RESIZE"
 
+config.keys = {
+	{
+		key = "w",
+		mods = "CTRL|SHIFT|ALT",
+		action = wezterm.action.CloseCurrentPane({ confirm = false }),
+	},
+}
+
 -- and finally, return the configuration to wezterm
 return config
