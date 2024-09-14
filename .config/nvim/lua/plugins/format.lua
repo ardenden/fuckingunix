@@ -4,16 +4,23 @@ return {
 		require("conform").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				javascript = { "prettierd", "prettier", stop_after_first = true },
-				typescript = { "prettierd", "prettier", stop_after_first = true },
-				json = { "prettierd", "prettier", stop_after_first = true },
+				javascript = { "prettierd", "prettier" },
+				typescript = { "prettierd", "prettier" },
+				json = { "prettierd", "prettier" },
 				rust = { "rustfmt" },
 				sh = { "shfmt" },
 				go = { "gofmt" },
 				zsh = { "beautysh" },
 			},
 			default_format_opts = {
+				stop_after_first = true,
 				lsp_format = "fallback",
+			},
+			formatters = {
+				beautysh = {
+					inherit = true,
+					append_args = { "--tab" },
+				},
 			},
 		})
 		vim.api.nvim_create_autocmd("BufWritePre", {
