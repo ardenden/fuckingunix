@@ -77,9 +77,13 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	local index = tab.tab_index + 1
 	local title = process and string.format("%s | %s | %s", index, process, cwd) or " [?] "
 	title = wezterm.truncate_right(title, max_width - 2)
-	local left = wezterm.nerdfonts.ple_lower_right_triangle
-	local right = wezterm.nerdfonts.ple_upper_left_triangle
-
+	local left = ""
+	local right = ""
+	if index <= 1 then
+		left = "█"
+	elseif index >= #tabs then
+		right = "█"
+	end
 	local output = {
 		{ Background = { Color = edge_background } },
 		{ Foreground = { Color = edge_foreground } },
@@ -91,25 +95,6 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		{ Foreground = { Color = edge_foreground } },
 		{ Text = right },
 	}
-	if index <= 1 then
-		output = {
-			{ Background = { Color = background } },
-			{ Foreground = { Color = foreground } },
-			{ Text = title },
-			{ Background = { Color = edge_background } },
-			{ Foreground = { Color = edge_foreground } },
-			{ Text = right },
-		}
-	elseif index >= #tabs then
-		output = {
-			{ Background = { Color = edge_background } },
-			{ Foreground = { Color = edge_foreground } },
-			{ Text = left },
-			{ Background = { Color = background } },
-			{ Foreground = { Color = foreground } },
-			{ Text = title },
-		}
-	end
 
 	return output
 end)
