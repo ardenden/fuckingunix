@@ -27,12 +27,12 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 99
 vim.opt.foldlevel = 99
 -- preserve folds
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-	pattern = { "*" },
-	command = "normal zx",
-})
-vim.cmd("autocmd BufLeave *.* mkview")
-vim.cmd("autocmd BufEnter *.* silent! loadview")
+-- vim.api.nvim_create_autocmd({ "BufEnter" }, {
+-- 	pattern = { "*" },
+-- 	command = "normal zx",
+-- })
+-- vim.cmd("autocmd BufLeave *.* mkview")
+-- vim.cmd("autocmd BufEnter *.* silent! loadview")
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
