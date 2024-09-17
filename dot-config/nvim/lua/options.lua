@@ -54,6 +54,7 @@ vim.keymap.set("n", "<a-j>", "<c-w>j")
 vim.keymap.set("n", "<a-k>", "<c-w>k")
 vim.keymap.set("n", "<a-l>", "<c-w>l")
 vim.keymap.set("n", "<a-q>", "<c-w>q")
+vim.keymap.set("n", "<a-s>", "<cmd>w<cr>")
 
 vim.diagnostic.config({ float = { border = "rounded" } })
 
