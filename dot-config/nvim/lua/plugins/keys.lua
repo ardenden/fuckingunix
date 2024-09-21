@@ -14,6 +14,7 @@ return {
 			{ "<leader>l", group = "lsp" },
 			{ "<leader>w", group = "workspace" },
 			{ "<leader>d", group = "diagnostics" },
+			{ "<leader>b", group = "buffer" },
 
 			{ "<leader>", name = "NORMAL", mode = "n" },
 			{ "<leader>", name = "VISUAL", mode = "v" },
