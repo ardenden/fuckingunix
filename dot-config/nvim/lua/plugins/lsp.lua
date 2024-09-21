@@ -42,7 +42,7 @@ return {
 				end, "list folders")
 
 				map("K", vim.lsp.buf.hover, "Hover Documentation")
-				map("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+				map("<leader>lk", vim.lsp.buf.signature_help, "Signature Documentation")
 
 				-- local client = vim.lsp.get_client_by_id(event.data.client_id)
 				-- if client and client.server_capabilities.documentHighlightProvider then
