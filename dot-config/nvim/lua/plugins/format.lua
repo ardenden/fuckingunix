@@ -11,6 +11,7 @@ return {
 				sh = { "shfmt" },
 				go = { "gofmt" },
 				zsh = { "beautysh" },
+				yaml = { "prettierd", "prettier" },
 			},
 			default_format_opts = {
 				stop_after_first = true,
