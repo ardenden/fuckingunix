@@ -77,6 +77,7 @@ plugins=(
 	you-should-use
 	zsh-bat
 	fzf-tab
+	web-search
 )
 
 source $ZSH/oh-my-zsh.sh
