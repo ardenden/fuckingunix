@@ -12,6 +12,7 @@ vim.opt.relativenumber = true
 vim.opt.completeopt = "menuone,noselect"
 vim.opt.list = true
 vim.opt.listchars = { tab = "│ ", trail = "·", nbsp = "␣" }
+vim.opt.fillchars = { eob = " " }
 vim.opt.inccommand = "split"
 vim.opt.scrolloff = 4
 vim.opt.tabstop = 4
