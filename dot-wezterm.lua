@@ -15,7 +15,7 @@ c.colors = {
 	},
 }
 
-c.window_background_opacity = 0.9
+c.window_background_opacity = 0.75
 c.window_padding = {
 	left = 0,
 	right = 0,
