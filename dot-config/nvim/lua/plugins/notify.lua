@@ -28,6 +28,17 @@ return {
 			"rcarriga/nvim-notify",
 			opts = {
 				background_colour = "#000000", -- for transparent background
+				routes = {
+					{
+						filter = {
+							event = "notify",
+							find = "No information available",
+						},
+						opts = {
+							skip = true,
+						},
+					},
+				},
 			},
 		},
 	},
