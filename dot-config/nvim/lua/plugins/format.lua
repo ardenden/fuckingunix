@@ -12,6 +12,8 @@ return {
 				go = { "gofmt" },
 				zsh = { "beautysh" },
 				yaml = { "prettierd", "prettier" },
+				css = { "prettierd", "prettier" },
+				svelte = { "prettierd", "prettier" },
 			},
 			default_format_opts = {
 				stop_after_first = true,
