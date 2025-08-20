@@ -1,0 +1,27 @@
+{
+	"workbench.iconTheme": "vscode-icons",
+	"editor.fontFamily": "JetBrainsMono Nerd Font",
+	"editor.fontSize": 16,
+	"editor.minimap.enabled": false,
+	"editor.scrollbar.verticalScrollbarSize": 48,
+	"editor.formatOnSave": true,
+	"editor.formatOnPaste": true,
+	"editor.renderFinalNewline": "off",
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"files.eol": "\n",
+	"files.insertFinalNewline": true,
+	"editorconfig.generateAuto": false,
+	"prettier.useEditorConfig": true,
+	"terminal.integrated.defaultProfile.linux": "zsh",
+	"terminal.integrated.profiles.linux": {
+		"zsh": {
+			"path": "/usr/bin/flatpak-spawn",
+			"args": [
+				"--host",
+				"--env=TERM=xterm-256color",
+				"zsh"
+			],
+			"overrideName": true
+		}
+	}
+}
