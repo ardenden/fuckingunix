@@ -79,15 +79,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function()
-		if vim.fn.getline("$") ~= "" then
-			vim.fn.append("$", "")
-		end
-	end,
-})
-
 -- for ts @Decorator
 vim.api.nvim_set_hl(0, "@attribute.typescript", { link = "@operator" })
-
