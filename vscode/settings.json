@@ -1,0 +1,19 @@
+{
+  "workbench.iconTheme": "vscode-icons",
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontSize": 16,
+  "editor.minimap.enabled": false,
+  "editor.scrollbar.verticalScrollbarSize": 48,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.renderFinalNewline": "off",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[shellscript]": {
+    "editor.defaultFormatter": "mkhl.shfmt"
+  },
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "editorconfig.generateAuto": false,
+  "prettier.useEditorConfig": true,
+  "shfmt.executablePath": "/usr/bin/shfmt"
+}
