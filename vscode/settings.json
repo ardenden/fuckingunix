@@ -15,5 +15,6 @@
   "files.insertFinalNewline": true,
   "editorconfig.generateAuto": false,
   "prettier.useEditorConfig": true,
+  "terminal.integrated.defaultProfile.linux": "zsh",
   "shfmt.executablePath": "/usr/bin/shfmt"
 }
