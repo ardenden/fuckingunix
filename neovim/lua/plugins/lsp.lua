@@ -1,88 +1,100 @@
 return {
-	"neovim/nvim-lspconfig",
-	dependencies = {
-		{ "williamboman/mason.nvim", opts = {} },
-		"williamboman/mason-lspconfig.nvim",
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		{
-			"j-hui/fidget.nvim",
-			opts = {
-				notification = {
-					window = {
-						winblend = 0,
-					},
-				},
+	{
+		"folke/lazydev.nvim",
+		ft = "lua",
+		opts = {
+			library = {
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 			},
 		},
-		{ "folke/neodev.nvim", opts = {} },
 	},
-	config = function()
-		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
-			callback = function(event)
-				local map = function(keys, func, desc)
-					vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-				end
-
-				map("gd", require("telescope.builtin").lsp_definitions, "go to definition")
-				map("gr", require("telescope.builtin").lsp_references, "go to references")
-				map("gI", require("telescope.builtin").lsp_implementations, "go to Implementation")
-				map("gD", vim.lsp.buf.declaration, "go to Declaration")
-
-				map("<leader>ld", require("telescope.builtin").lsp_type_definitions, "type definition")
-				map("<leader>ls", require("telescope.builtin").lsp_document_symbols, "document symbols")
-				map("<leader>lr", vim.lsp.buf.rename, "rename")
-				map("<leader>la", vim.lsp.buf.code_action, "action")
-
-				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "symbols")
-				map("<leader>wa", vim.lsp.buf.add_workspace_folder, "add folder")
-				map("<leader>wr", vim.lsp.buf.remove_workspace_folder, "remove folder")
-				map("<leader>wl", function()
-					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-				end, "list folders")
-
-				map("K", vim.lsp.buf.hover, "Hover Documentation")
-				map("<leader>lk", vim.lsp.buf.signature_help, "Signature Documentation")
-			end,
-		})
-
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-		local servers = {
-			clangd = {},
-			gopls = {},
-			pyright = {},
-			rust_analyzer = {},
-			ts_ls = {},
-			bashls = {},
-			lua_ls = {
-				settings = {
-					Lua = {
-						completion = {
-							callSnippet = "Replace",
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			{ "williamboman/mason.nvim", opts = {} },
+			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			{
+				"j-hui/fidget.nvim",
+				opts = {
+					notification = {
+						window = {
+							winblend = 0,
 						},
 					},
 				},
 			},
-		}
+			"saghen/blink.cmp",
+		},
+		config = function()
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+				callback = function(event)
+					local map = function(keys, func, desc, mode)
+						mode = mode or "n"
+						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+					end
 
-		local ensure_installed = vim.tbl_keys(servers or {})
-		vim.list_extend(ensure_installed, {
-			"stylua",
-		})
+					map("<leader>lr", vim.lsp.buf.rename, "rename")
+					map("<leader>la", vim.lsp.buf.code_action, "action")
+					map("gD", vim.lsp.buf.declaration, "go to Declaration")
 
-		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+					map("gd", require("telescope.builtin").lsp_definitions, "go to definition")
+					map("gr", require("telescope.builtin").lsp_references, "go to references")
+					map("gI", require("telescope.builtin").lsp_implementations, "go to Implementation")
+					map("gt", require("telescope.builtin").lsp_type_definitions, "type definition")
 
-		require("mason-lspconfig").setup({
-			ensure_installed = {},
-			automatic_installation = false,
-			handlers = {
-				function(server_name)
-					local server = servers[server_name] or {}
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					require("lspconfig")[server_name].setup(server)
+					map("<leader>ls", require("telescope.builtin").lsp_document_symbols, "document symbols")
+					map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "symbols")
+
+					map("<leader>wa", vim.lsp.buf.add_workspace_folder, "add folder")
+					map("<leader>wr", vim.lsp.buf.remove_workspace_folder, "remove folder")
+					map("<leader>wl", function()
+						print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+					end, "list folders")
+
+					map("K", vim.lsp.buf.hover, "Hover Documentation")
+					map("<leader>lk", vim.lsp.buf.signature_help, "Signature Documentation")
 				end,
-			},
-		})
-	end,
+			})
+
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			local servers = {
+				clangd = {},
+				gopls = {},
+				pyright = {},
+				rust_analyzer = {},
+				ts_ls = {},
+				bashls = {},
+				lua_ls = {
+					settings = {
+						Lua = {
+							completion = {
+								callSnippet = "Replace",
+							},
+						},
+					},
+				},
+			}
+
+			local ensure_installed = vim.tbl_keys(servers or {})
+			vim.list_extend(ensure_installed, {
+				"stylua",
+			})
+
+			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+			require("mason-lspconfig").setup({
+				ensure_installed = {},
+				automatic_installation = false,
+				handlers = {
+					function(server_name)
+						local server = servers[server_name] or {}
+						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+						require("lspconfig")[server_name].setup(server)
+					end,
+				},
+			})
+		end,
+	},
 }

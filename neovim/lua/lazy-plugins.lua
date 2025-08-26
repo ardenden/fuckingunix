@@ -1,5 +1,5 @@
 require("lazy").setup({
-	"tpope/vim-sleuth",
+	"NMAC427/guess-indent.nvim",
 	require("plugins/greeter"),
 	require("plugins/breadcrumbs"),
 	require("plugins/comment"),

@@ -1,11 +1,8 @@
 return {
-	"Mofiqul/vscode.nvim",
+	"AlexvZyl/nordic.nvim",
+	lazy = false,
+	priority = 1000,
 	config = function()
-		require("vscode").setup({
-			italic_comments = true,
-			underline_links = true,
-			transparent = true,
-		})
-		vim.cmd.colorscheme("vscode")
+		require("nordic").load()
 	end,
 }

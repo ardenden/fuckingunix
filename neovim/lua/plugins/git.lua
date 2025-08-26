@@ -6,7 +6,6 @@ return {
 			"sindrets/diffview.nvim", -- optional - Diff integration
 			"nvim-telescope/telescope.nvim", -- optional
 		},
-		config = true,
 		vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Neogit" }),
 	},
 
@@ -14,7 +13,7 @@ return {
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			on_attach = function(bufnr)
-				local gs = package.loaded.gitsigns
+				local gs = require("gitsigns")
 
 				local function map(mode, l, r, opts)
 					opts = opts or {}
@@ -23,25 +22,21 @@ return {
 				end
 
 				-- Navigation
-				map({ "n" }, "]c", function()
+				map("n", "]c", function()
 					if vim.wo.diff then
-						return "]c"
+						vim.cmd.normal({ "]c", bang = true })
+					else
+						gitsigns.nav_hunk("next")
 					end
-					vim.schedule(function()
-						gs.next_hunk()
-					end)
-					return "<Ignore>"
-				end, { expr = true, desc = "Jump to next hunk" })
+				end, { desc = "Jump to next hunk" })
 
-				map({ "n" }, "[c", function()
+				map("n", "[c", function()
 					if vim.wo.diff then
-						return "[c"
+						vim.cmd.normal({ "[c", bang = true })
+					else
+						gitsigns.nav_hunk("prev")
 					end
-					vim.schedule(function()
-						gs.prev_hunk()
-					end)
-					return "<Ignore>"
-				end, { expr = true, desc = "Jump to previous hunk" })
+				end, { desc = "Jump to previous hunk" })
 
 				-- Actions
 				-- visual mode
@@ -53,22 +48,20 @@ return {
 				end, { desc = "reset hunk" })
 				-- normal mode
 				map("n", "<leader>gs", gs.stage_hunk, { desc = "stage hunk" })
+				map("n", "<leader>gu", gs.stage_hunk, { desc = "unstage hunk" })
 				map("n", "<leader>gr", gs.reset_hunk, { desc = "reset hunk" })
-				map("n", "<leader>gu", gs.undo_stage_hunk, { desc = "unstage hunk" })
 				map("n", "<leader>gS", gs.stage_buffer, { desc = "Stage buffer" })
 				map("n", "<leader>gR", gs.reset_buffer, { desc = "Reset buffer" })
 				map("n", "<leader>gp", gs.preview_hunk, { desc = "preview hunk" })
-				map("n", "<leader>gb", function()
-					gs.blame_line({ full = false })
-				end, { desc = "blame line" })
+				map("n", "<leader>gb", gs.blame_line, { desc = "blame line" })
+				map("n", "<leader>gC", gs.diffthis, { desc = "diff against index" })
 				map("n", "<leader>gc", function()
-					gs.diffthis("~")
-				end, { desc = "compare against last commit" })
-				map("n", "<leader>gC", gs.diffthis, { desc = "Compare against index" })
+					gs.diffthis("@")
+				end, { desc = "diff against last commit" })
 
 				-- Toggles
 				map("n", "<leader>gl", gs.toggle_current_line_blame, { desc = "toggle blame line" })
-				map("n", "<leader>gd", gs.toggle_deleted, { desc = "toggle show deleted" })
+				map("n", "<leader>gd", gs.preview_hunk_inline, { desc = "toggle show deleted" })
 			end,
 		},
 	},
