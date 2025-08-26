@@ -16,5 +16,11 @@
   "editorconfig.generateAuto": false,
   "prettier.useEditorConfig": true,
   "terminal.integrated.defaultProfile.linux": "zsh",
-  "shfmt.executablePath": "/usr/bin/shfmt"
+  "shfmt.executablePath": "/usr/bin/shfmt",
+  "[lua]": {
+    "editor.defaultFormatter": "JohnnyMorganz.stylua"
+  },
+  "scm.diffDecorationsGutterWidth": 5,
+  "editor.lineNumbers": "relative",
+  "editor.multiCursorModifier": "ctrlCmd"
 }
