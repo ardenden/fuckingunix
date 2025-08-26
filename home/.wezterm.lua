@@ -22,7 +22,7 @@ c.window_padding = {
 	top = 0,
 	bottom = 0,
 }
-c.window_decorations = "RESIZE"
+-- c.window_decorations = "RESIZE"
 c.inactive_pane_hsb = {
 	saturation = 0.9,
 	brightness = 0.3,
