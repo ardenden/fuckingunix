@@ -8,11 +8,10 @@ local c = wezterm.config_builder()
 
 c.default_prog = { "zsh" }
 
-c.color_scheme = "nord"
+c.color_scheme = "Vs Code Dark+ (Gogh)"
 c.colors = {
-	-- background = "#020403",
 	tab_bar = {
-		background = "rgba(25,29,36,0.9)",
+		background = "rgba(38,38,38,0.9)",
 	},
 }
 
@@ -60,15 +59,15 @@ local function process_name(tab)
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	local edge_background = "rgba(25,29,36,0.9)"
-	local background = "#2e3440"
-	local foreground = "#cdd6f4"
+	local edge_background = "rgba(38,38,38,0.9)"
+	local background = "#373737"
+	local foreground = "#9c9c9c"
 
 	if tab.is_active then
-		background = "#d79784"
-		foreground = "#262626"
+		background = "#0a7aca"
+		foreground = "#c2def2"
 	elseif hover then
-		background = "#c5727a"
+		background = "#ffaf00"
 		foreground = "#262626"
 	end
 

@@ -9,18 +9,14 @@ return {
 				return "recording @" .. recording_register
 			end
 		end
-		local theme = require("lualine.themes.nordic")
-		-- local i_a_bg = theme.insert.a.bg
-		-- local i_b_fg = theme.insert.b.fg
-		-- local n_a_bg = theme.normal.a.bg
-		-- local n_b_fg = theme.normal.b.fg
-		-- theme.normal.a.bg = i_a_bg
-		-- theme.normal.b.fg = i_b_fg
-		-- theme.insert.a.bg = n_a_bg
-		-- theme.insert.b.fg = n_b_fg
-		-- theme.normal.c.bg = "None"
-		-- theme.insert.c.bg = "None"
-		-- theme.replace.c.bg = "None"
+		local theme = require("lualine.themes.vscode")
+		theme.normal.b.bg = "#202020"
+		theme.command.b.bg = "#202020"
+		theme.inactive.b.bg = "#202020"
+		theme.insert.b.bg = "#202020"
+		theme.replace.b.bg = "#202020"
+		theme.terminal.b.bg = "#202020"
+		theme.visual.b.bg = "#202020"
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,

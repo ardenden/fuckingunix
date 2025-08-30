@@ -29,6 +29,5 @@
   },
   "scm.diffDecorationsGutterWidth": 5,
   "editor.lineNumbers": "relative",
-  "editor.multiCursorModifier": "ctrlCmd",
-  "workbench.colorTheme": "nordic-vscode"
+  "editor.multiCursorModifier": "ctrlCmd"
 }
