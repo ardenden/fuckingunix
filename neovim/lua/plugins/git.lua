@@ -26,7 +26,7 @@ return {
 					if vim.wo.diff then
 						vim.cmd.normal({ "]c", bang = true })
 					else
-						gitsigns.nav_hunk("next")
+						gs.nav_hunk("next")
 					end
 				end, { desc = "Jump to next hunk" })
 
@@ -34,7 +34,7 @@ return {
 					if vim.wo.diff then
 						vim.cmd.normal({ "[c", bang = true })
 					else
-						gitsigns.nav_hunk("prev")
+						gs.nav_hunk("prev")
 					end
 				end, { desc = "Jump to previous hunk" })
 
